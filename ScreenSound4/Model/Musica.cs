@@ -1,4 +1,5 @@
 ﻿using System.Text.Json.Serialization;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ScreenSound4.Model;
 
@@ -32,12 +33,21 @@ internal class Musica
         // Percorrer todas as musicas
         foreach(Musica musica in musicas)
         {
+            // Dividir a string de gêneros em um array usando a vírgula como separador
+            string[] generos = musica.Genero!.Split(',');
 
-            // Antes de adicionar a musica ao genero unico, preciso realizar alguns procedimentos
-            generosUnicos.Add(musica.Genero!);
+            // Percorrer generos para remover espaços em branco ao redor de cada gênero e adicionar ao HashSet
+            foreach (string genero in generos)
+            {
+                // O método Trim() em C# remove caracteres específicos de uma string. Por padrão, ele remove caracteres de espaço em branco
+                // E caracteres de controle Unicode do início e do final da string. 
+                string generoSemEspaços = genero.Trim();
+                // Cada gênero é adicionado ao HashSet após remover espaços em branco ao redor.
+                generosUnicos.Add(generoSemEspaços);
+            }
         }
         // Após abstrair os generos vou exibir no console, ou retornar dependendo da proposta
-        Console.WriteLine("Todos os generos musicais: ");
+        Console.WriteLine("Todos os generos musicais: \n");
         // Extraindo musicas para albuns
         foreach (var genero in generosUnicos)
         {
