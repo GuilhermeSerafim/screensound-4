@@ -28,6 +28,20 @@
 //        Console.WriteLine(ex.Message);
 //    }
 //}
+
+using (HttpClient client = new HttpClient())
+{
+    try
+    {
+        string resposta = await client.GetStringAsync("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY");
+        Console.WriteLine(resposta);
+    }
+    catch (Exception e)
+    {
+
+        Console.WriteLine(e.Message);
+    }
+}
 //try
 //{
 //    Console.WriteLine("Digite o primeiro numero: ");
@@ -56,12 +70,12 @@
 //    Console.WriteLine(e.Message);
 //}
 
-try
-{
-    MinhaClasse objetoNulo = null;
-    objetoNulo.MeuMetodo();
-}
-catch (NullReferenceException ex)
-{
-    Console.WriteLine($"Erro: {ex.Message}");
-}
+//try
+//{
+//    MinhaClasse objetoNulo = null;
+//    objetoNulo.MeuMetodo();
+//}
+//catch (NullReferenceException ex)
+//{
+//    Console.WriteLine($"Erro: {ex.Message}");
+//}
