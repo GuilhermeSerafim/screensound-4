@@ -8,10 +8,8 @@ using (HttpClient client = new())
     {
         // Utilizamos o async, pois não sabemos quantas músicas tem
         string resposta = await client.GetStringAsync("https://guilhermeonrails.github.io/api-csharp-songs/songs.json");
-        // Tá tudo em string - dificil de manipular
-        //Console.WriteLine(resposta); // Dados da api
         // Desserialização (metodo statico)
-        var musicas = JsonSerializer.Deserialize<List<Musica>>(resposta);
+        List<Musica> musicas = JsonSerializer.Deserialize<List<Musica>>(resposta)!; // Indicando que não é nulo !
         musicas[1998].ExibirInfoMusica();
     }
     catch (Exception ex)
@@ -21,3 +19,5 @@ using (HttpClient client = new())
 
     // Liberar Recurso
 }
+// Embora o código fornecido não inclua uma operação explícita de serialização, a função JsonSerializer pode ser usada tanto
+// para serializar (converter objetos em uma representação JSON) quanto para desserializar (converter JSON em objetos).
