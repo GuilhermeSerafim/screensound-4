@@ -31,7 +31,7 @@ internal class Musica
         // Criar um HashSet para armazenar gêneros musicais únicos
         HashSet<string> generosUnicos = new HashSet<string>();
         // Percorrer todas as musicas
-        foreach(Musica musica in musicas)
+        foreach (Musica musica in musicas)
         {
             // Dividir a string de gêneros em um array usando a vírgula como separador
             string[] generos = musica.Genero!.Split(',');
@@ -42,8 +42,11 @@ internal class Musica
                 // O método Trim() em C# remove caracteres específicos de uma string. Por padrão, ele remove caracteres de espaço em branco
                 // E caracteres de controle Unicode do início e do final da string. 
                 string generoSemEspaços = genero.Trim();
-                // Cada gênero é adicionado ao HashSet após remover espaços em branco ao redor.
-                generosUnicos.Add(generoSemEspaços);
+                if (!(generoSemEspaços == "set()")) // Tratando spring do python
+                {
+                    // Cada gênero é adicionado ao HashSet após remover espaços em branco ao redor.
+                    generosUnicos.Add(generoSemEspaços);
+                }
             }
         }
         // Após abstrair os generos vou exibir no console, ou retornar dependendo da proposta
