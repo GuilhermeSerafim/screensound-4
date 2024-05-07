@@ -21,12 +21,7 @@ using (HttpClient client = new())
         //LinqOrder.ExibirArtistasOrdenados(musicas);
         //LinqFilter.FiltrarArtistaPorGeneroMusical(musicas, "rock");
         //LinqFilter.FiltrarMusicasDeUmArtista(musicas, "Michel Teló");
-        var musicasFiltradaPorAnoDe2010 = musicas.Where(musica => int.Parse(musica.Year !)> 2010).ToList();
-        Console.WriteLine("Exibindo músicas do ano 2010 para cima");
-        foreach (var item in musicasFiltradaPorAnoDe2010)
-        {
-            Console.WriteLine(item.Nome + "\n");
-        }
+        LinqFilter.FiltrarPorAno(musicas, 2010);
     }
     catch (Exception ex)
     {

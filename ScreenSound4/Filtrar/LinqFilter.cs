@@ -57,4 +57,13 @@ internal class LinqFilter
             Console.WriteLine($"Artista {nomeDoArtista} não encontrado");
         }
     }
+    public static void FiltrarPorAno(List<Musica> musicas, int ano)
+    {
+        var musicasFiltradaPorAnoDe2010 = musicas.Where(musica => int.Parse(musica.Year!) > ano).ToList();
+        Console.WriteLine("Exibindo músicas do ano 2010 para cima");
+        foreach (var item in musicasFiltradaPorAnoDe2010)
+        {
+            Console.WriteLine(item.Nome + "\n");
+        }
+    }
 }
