@@ -14,14 +14,16 @@ using (HttpClient client = new())
         string resposta = await client.GetStringAsync("https://guilhermeonrails.github.io/api-csharp-songs/songs.json");
         // Desserialização (metodo estatico)
         List<Musica> musicas = JsonSerializer.Deserialize<List<Musica>>(resposta)!; // Indicando que não é nulo !
-        //musicas[1998].ExibirInfoMusica();
-        // Desafio 1 - Exibir todos os generos de musicas da lista
-        //Musica.FiltrarEExibirTodosGenerosMusicaisUnicos(musicas); // Solução mais eficiente
-        //LinqFilter.FiltrarTodosOsGenerosMusicais(musicas); // Solução moderna
-        //LinqOrder.ExibirArtistasOrdenados(musicas);
-        //LinqFilter.FiltrarArtistaPorGeneroMusical(musicas, "rock");
-        //LinqFilter.FiltrarMusicasDeUmArtista(musicas, "Michel Teló");
-        LinqFilter.FiltrarPorAno(musicas, 2010);
+
+        MusicasPreferidas musicaPreferidasGui = new("Guilherme");
+        musicaPreferidasGui.AdicionarMusicasFavoritas(musicas[1]);
+        musicaPreferidasGui.AdicionarMusicasFavoritas(musicas[2]);
+        musicaPreferidasGui.AdicionarMusicasFavoritas(musicas[3]);
+        musicaPreferidasGui.AdicionarMusicasFavoritas(musicas[4]);
+        musicaPreferidasGui.AdicionarMusicasFavoritas(musicas[5]);
+
+        musicaPreferidasGui.ExibirMusicasFavoritas();
+
     }
     catch (Exception ex)
     {
