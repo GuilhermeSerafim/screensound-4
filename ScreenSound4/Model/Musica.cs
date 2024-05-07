@@ -6,7 +6,7 @@ namespace ScreenSound4.Model;
 internal class Musica
 {
     // Metadado
-    [JsonPropertyName("song")]
+    [JsonPropertyName("song")] // Esse nome tem que ser da api
     public string? Nome { get; set; }
 
     [JsonPropertyName("artist")]
@@ -25,11 +25,11 @@ internal class Musica
         Console.WriteLine($"Genêro musical: {Genero}");
         Console.WriteLine($"Duracao: {Duracao / 1000}");
     }
-    public static void ExibirTodosGenerosMusicais(List<Musica> musicas)
+    public static void ExibirTodosGenerosMusicaisUnicos(List<Musica> musicas)
     {
-        // Extraindo musicas para genero unico
-        // Criar um HashSet para armazenar gêneros musicais únicos
+        // Para armazenar gêneros musicais únicos
         HashSet<string> generosUnicos = new HashSet<string>();
+
         // Percorrer todas as musicas
         foreach (Musica musica in musicas)
         {
@@ -42,6 +42,7 @@ internal class Musica
                 // O método Trim() em C# remove caracteres específicos de uma string. Por padrão, ele remove caracteres de espaço em branco
                 // E caracteres de controle Unicode do início e do final da string. 
                 string generoSemEspaços = genero.Trim();
+
                 if (!(generoSemEspaços == "set()")) // Tratando spring do python
                 {
                     // Cada gênero é adicionado ao HashSet após remover espaços em branco ao redor.
@@ -49,13 +50,18 @@ internal class Musica
                 }
             }
         }
-        // Após abstrair os generos vou exibir no console, ou retornar dependendo da proposta
+
+        // Exibição
         Console.WriteLine("Todos os generos musicais: \n");
-        // Extraindo musicas para albuns
         foreach (var genero in generosUnicos)
         {
             Console.WriteLine(genero);
             Console.WriteLine();
         }
+    }
+    
+    public static void FiltrarArtistaPorGeneroMusical()
+    {
+        // Escrevendo
     }
 }
