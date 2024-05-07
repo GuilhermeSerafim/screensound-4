@@ -25,7 +25,7 @@ internal class Musica
         Console.WriteLine($"Genêro musical: {Genero}");
         Console.WriteLine($"Duracao: {Duracao / 1000}");
     }
-    public static void ExibirTodosGenerosMusicaisUnicos(List<Musica> musicas)
+    public static void FiltrarEExibirTodosGenerosMusicaisUnicos(List<Musica> musicas)
     {
         // Para armazenar gêneros musicais únicos
         HashSet<string> generosUnicos = new HashSet<string>();
