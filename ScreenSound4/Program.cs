@@ -1,5 +1,6 @@
 ﻿// Esse using tem um contexto diferente - Gerenciar recurso
 using System.Text.Json;
+using ScreenSound4.Desafio.ModelarESerializar;
 using ScreenSound4.Model;
 //using (HttpClient client = new())
 //{
@@ -19,16 +20,9 @@ using ScreenSound4.Model;
 //        Console.WriteLine("Temos um problema: " + ex.Message);
 //    }
 //}
-
-using (HttpClient cliente = new HttpClient())
+using (HttpClient client = new())
 {
-	try
-	{
-		string res = await cliente.GetStringAsync("https://raw.githubusercontent.com/ArthurOcFernandes/Exerc-cios-C-/curso-4-aula-2/Jsons/TopMovies.json");
-	}
-	catch (Exception ex)
-	{
-
-        Console.WriteLine("Temos um problema: " + ex.Message);
-    }
+    string res = await client.GetStringAsync("https://www.anapioficeandfire.com/api/characters/16");
+    GameOfThrones gameOfThrones = JsonSerializer.Deserialize<GameOfThrones>(res)!;
+    gameOfThrones.ExibirSessoesAtuadas();
 }
