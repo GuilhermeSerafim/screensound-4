@@ -11,7 +11,7 @@ internal class LinqFilter
 {
     public static void FiltrarTodosOsGenerosMusicais(List<Musica> musicas)
     {
-        var todosOsGenerosMusicais = musicas.Select(generos => generos.Genero) // Operação LINQ
+        var todosOsGenerosMusicais = musicas.Select(genero => genero.Genero) // Operação LINQ
             .Distinct() // Remover duplicata
             .ToList(); // Converte os gêneros musicais distintos em uma lista.
 

@@ -59,9 +59,5 @@ internal class Musica
             Console.WriteLine();
         }
     }
-    
-    public static void FiltrarArtistaPorGeneroMusical()
-    {
-        // Escrevendo
-    }
+   
 }

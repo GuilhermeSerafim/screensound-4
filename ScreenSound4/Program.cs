@@ -16,8 +16,9 @@ using (HttpClient client = new())
         List<Musica> musicas = JsonSerializer.Deserialize<List<Musica>>(resposta)!; // Indicando que não é nulo !
         //musicas[1998].ExibirInfoMusica();
         // Desafio 1 - Exibir todos os generos de musicas da lista
-        Musica.ExibirTodosGenerosMusicaisUnicos(musicas);
-        LinqFilter.FiltrarTodosOsGenerosMusicais(musicas); // Solução moderna
+        //Musica.FiltrarEExibirTodosGenerosMusicaisUnicos(musicas); // Solução mais eficiente
+        //LinqFilter.FiltrarTodosOsGenerosMusicais(musicas); // Solução moderna
+        LinqOrder.ExibirArtistasOrdenados(musicas);
     }
     catch (Exception ex)
     {
