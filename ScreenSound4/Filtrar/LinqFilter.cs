@@ -36,9 +36,25 @@ internal class LinqFilter
                 Console.WriteLine($"- {artista}");
             }
 
-        } else
+        }
+        else
         {
             Console.WriteLine($"Gênero {generoRequerido} não encontrado");
+        }
+    }
+    public static void FiltrarMusicasDeUmArtista(List<Musica> musicas, string nomeDoArtista)
+    {
+        List<Musica> musicasDoArtista = musicas.Where(musica => musica.Artista!.Equals(nomeDoArtista)).ToList();
+        if (musicasDoArtista.Count() > 0)
+        {
+            Console.WriteLine($"Musicas do artista {nomeDoArtista}");
+            foreach (var item in musicasDoArtista)
+            {
+                Console.WriteLine($"- {item.Nome}");
+            }
+        } else
+        {
+            Console.WriteLine($"Artista {nomeDoArtista} não encontrado");
         }
     }
 }
