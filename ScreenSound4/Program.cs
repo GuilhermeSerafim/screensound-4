@@ -15,14 +15,15 @@ using (HttpClient client = new())
         // Desserialização (metodo estatico)
         List<Musica> musicas = JsonSerializer.Deserialize<List<Musica>>(resposta)!; // Indicando que não é nulo !
 
-        MusicasPreferidas musicaPreferidasGui = new("Guilherme");
-        musicaPreferidasGui.AdicionarMusicasFavoritas(musicas[1]);
-        musicaPreferidasGui.AdicionarMusicasFavoritas(musicas[2]);
-        musicaPreferidasGui.AdicionarMusicasFavoritas(musicas[3]);
-        musicaPreferidasGui.AdicionarMusicasFavoritas(musicas[4]);
-        musicaPreferidasGui.AdicionarMusicasFavoritas(musicas[5]);
+        MusicasPreferidas musicasPreferidasGui = new("Guilherme");
+        musicasPreferidasGui.AdicionarMusicasFavoritas(musicas[1900]);
+        musicasPreferidasGui.AdicionarMusicasFavoritas(musicas[1800]);
+        musicasPreferidasGui.AdicionarMusicasFavoritas(musicas[1700]);
+        musicasPreferidasGui.AdicionarMusicasFavoritas(musicas[1600]);
+        musicasPreferidasGui.AdicionarMusicasFavoritas(musicas[1500]); // Tem que colocar exatamente 5 musicas
 
-        musicaPreferidasGui.ExibirMusicasFavoritas();
+        musicasPreferidasGui.ExibirMusicasFavoritas();
+        musicasPreferidasGui.GerarArquivoJson();
 
     }
     catch (Exception ex)
