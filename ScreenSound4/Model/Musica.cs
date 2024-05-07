@@ -9,6 +9,9 @@ internal class Musica
     [JsonPropertyName("song")] // Esse nome tem que ser da api
     public string? Nome { get; set; }
 
+    [JsonPropertyName("year")]
+    public string? Year { get; set; }
+
     [JsonPropertyName("artist")]
     public string? Artista { get; set; }
 
