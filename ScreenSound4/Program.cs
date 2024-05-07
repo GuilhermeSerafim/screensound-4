@@ -18,7 +18,8 @@ using (HttpClient client = new())
         // Desafio 1 - Exibir todos os generos de musicas da lista
         //Musica.FiltrarEExibirTodosGenerosMusicaisUnicos(musicas); // Solução mais eficiente
         //LinqFilter.FiltrarTodosOsGenerosMusicais(musicas); // Solução moderna
-        LinqOrder.ExibirArtistasOrdenados(musicas);
+        //LinqOrder.ExibirArtistasOrdenados(musicas);
+        LinqFilter.FiltrarArtistaPorGeneroMusical(musicas, "rock");
     }
     catch (Exception ex)
     {

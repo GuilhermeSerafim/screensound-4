@@ -20,4 +20,25 @@ internal class LinqFilter
             Console.WriteLine($"- {genero}");
         }
     }
+    public static void FiltrarArtistaPorGeneroMusical(List<Musica> musicas, string generoRequerido)
+    {
+        // Usado para filtrar uma sequência com base em um critério específico.
+        List<string> artistasPorGeneroMusical = musicas.Where(musica =>
+            musica.Genero!.Contains(generoRequerido))
+            .Select(musica => musica.Artista)
+            .Distinct().ToList()!;
+
+        if (artistasPorGeneroMusical.Count() > 0)
+        {
+            Console.WriteLine($"Exibindo os artistas do genero músical {generoRequerido}: ");
+            foreach (var artista in artistasPorGeneroMusical)
+            {
+                Console.WriteLine($"- {artista}");
+            }
+
+        } else
+        {
+            Console.WriteLine($"Gênero {generoRequerido} não encontrado");
+        }
+    }
 }
