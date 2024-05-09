@@ -67,13 +67,13 @@ internal class LinqFilter
         }
     }
 
-    public static void FiltrarMusicasPorTonalidade(List<Musica> musicas, string tonalidadeRequirida)
+    public static void FiltrarMusicasPorTonalidade(List<Musica> musicas, string tonalidadeRequerida)
     {
         var musicasEmCSharp = musicas
-            .Where(musica => musica.Tonalidade.Equals(tonalidadeRequirida))
+            .Where(musica => musica.Tonalidade.Equals(tonalidadeRequerida))
             .Select(musica => musica.Nome)
             .ToList();
-        Console.WriteLine($"Músicas na tonalidade {tonalidadeRequirida}:\n");
+        Console.WriteLine($"Músicas na tonalidade {tonalidadeRequerida}:\n");
         foreach (var musica in musicasEmCSharp)
         {
             Console.WriteLine($"- {musica}");
