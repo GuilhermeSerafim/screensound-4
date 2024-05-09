@@ -11,8 +11,8 @@ internal class LinqOrder
 {
     public static void ExibirArtistasOrdenados(List<Musica> musicas)
     {
-        List<string> artistasOrdenados = musicas.OrderBy(musica => musica.Artista) // LINQ Ordenação crescente pela prop Artista
-            .Select(musica => musica.Artista) // A partir do resultado, seleciono uma parte da lista de musicas, no caso a prop Artista
+        List<string> artistasOrdenados = musicas.OrderBy(musica => musica.Artista) // APENAS Ordenação
+            .Select(musica => musica.Artista) // Extração dos artistas
             .Distinct() // Tirar repetido
             .ToList()!; // Colocando em uma lista de string
 

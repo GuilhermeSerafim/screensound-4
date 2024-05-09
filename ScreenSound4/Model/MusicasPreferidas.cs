@@ -26,7 +26,7 @@ internal class MusicasPreferidas(string nome)
         }
     }
 
-    public void GerarArquivoJson()
+    public void GerarArquivoJsonComAsMusicas()
     {
         try
         {

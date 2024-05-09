@@ -21,12 +21,22 @@ internal class Musica
     [JsonPropertyName("genre")]
     public string? Genero { get; set; }
 
+    [JsonPropertyName("key")]
+    public int? NotaDaMusicaEmNumero;
+
+    public string? NotaDaMusica =>
+        NotaDaMusicaEmNumero == 1 ? "C" :
+        NotaDaMusicaEmNumero == 2 ? "C#" :
+        NotaDaMusicaEmNumero == 3 ? "D" :
+        NotaDaMusicaEmNumero == 4 ? "E" : "F";
+
     public void ExibirInfoMusica()
     {
         Console.WriteLine($"Artista: {Artista}");
         Console.WriteLine($"Musica: {Nome}");
         Console.WriteLine($"Genêro musical: {Genero}");
         Console.WriteLine($"Duracao: {Duracao / 1000}");
+        Console.WriteLine($"Nota da música: {NotaDaMusica}");
     }
     public static void FiltrarEExibirTodosGenerosMusicaisUnicos(List<Musica> musicas)
     {
