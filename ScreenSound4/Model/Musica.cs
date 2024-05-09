@@ -21,14 +21,19 @@ internal class Musica
     [JsonPropertyName("genre")]
     public string? Genero { get; set; }
 
-    [JsonPropertyName("key")]
-    public int? NotaDaMusicaEmNumero;
+    private string[] tonalidades = { "C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B" };
 
-    public string? NotaDaMusica =>
-        NotaDaMusicaEmNumero == 1 ? "C" :
-        NotaDaMusicaEmNumero == 2 ? "C#" :
-        NotaDaMusicaEmNumero == 3 ? "D" :
-        NotaDaMusicaEmNumero == 4 ? "E" : "F";
+    [JsonPropertyName("key")]
+    public int Key { get; set; }
+
+    public string Tonalidade
+    {
+        get
+        {
+            return tonalidades[Key];
+        }
+    }
+
 
     public void ExibirInfoMusica()
     {
@@ -36,7 +41,7 @@ internal class Musica
         Console.WriteLine($"Musica: {Nome}");
         Console.WriteLine($"Genêro musical: {Genero}");
         Console.WriteLine($"Duracao: {Duracao / 1000}");
-        Console.WriteLine($"Nota da música: {NotaDaMusica}");
+        Console.WriteLine($"Tonalidade da música: {Tonalidade}");
     }
     public static void FiltrarEExibirTodosGenerosMusicaisUnicos(List<Musica> musicas)
     {

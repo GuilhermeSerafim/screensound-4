@@ -16,15 +16,16 @@ using (HttpClient client = new())
         List<Musica> musicas = JsonSerializer.Deserialize<List<Musica>>(resposta)!; // Indicando que não é nulo !
 
         MusicasPreferidas musicasPreferidasGui = new("Ana");
-        //musicasPreferidasGui.AdicionarMusicasFavoritas(musicas[1901]);
-        //musicasPreferidasGui.AdicionarMusicasFavoritas(musicas[1801]);
-        //musicasPreferidasGui.AdicionarMusicasFavoritas(musicas[1701]);
-        //musicasPreferidasGui.AdicionarMusicasFavoritas(musicas[1601]);
-        //musicasPreferidasGui.AdicionarMusicasFavoritas(musicas[1501]); // Tem que colocar exatamente 5 musicas
+        musicasPreferidasGui.AdicionarMusicasFavoritas(musicas[1901]);
+        musicasPreferidasGui.AdicionarMusicasFavoritas(musicas[1801]);
+        musicasPreferidasGui.AdicionarMusicasFavoritas(musicas[1701]);
+        musicasPreferidasGui.AdicionarMusicasFavoritas(musicas[1601]);
+        musicasPreferidasGui.AdicionarMusicasFavoritas(musicas[1501]); // Tem que colocar exatamente 5 musicas
 
         //musicasPreferidasGui.ExibirMusicasFavoritas();
         //musicasPreferidasGui.GerarArquivoJsonComAsMusicas();
-        musicas[77].ExibirInfoMusica();
+        //musicas[77].ExibirInfoMusica();
+        LinqFilter.FiltrarMusicasPorTonalidade(musicas, "C#");
 
     }
     catch (Exception ex)
