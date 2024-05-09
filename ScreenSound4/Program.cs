@@ -118,11 +118,13 @@ using System.Text.Json;
 
 
 // Desafio 4
+// Desserializar arquivo local json
 if(File.Exists("pessoas.json"))
 {
     // Ler conteúdo do arquivo JSON
     string jsonString = File.ReadAllText("pessoas.json");
-    List<Pessoa> pessoas = JsonSerializer.Deserialize<List<Pessoa>>(jsonString)!;
+    // Json para Objeto
+    List<Pessoa> pessoas = JsonSerializer.Deserialize<List<Pessoa>>(jsonString)!; // Desserialização
     foreach(var pessoa in pessoas)
     {
         Console.WriteLine(pessoa.Nome + " - " + pessoa.Email);
@@ -130,6 +132,7 @@ if(File.Exists("pessoas.json"))
 }
 
 // Desafio 5
+// Filtrar pessoa por nome
 // Nome do arquivo para ler
 string fileName = "pessoas.json";
 
@@ -139,20 +142,17 @@ if (File.Exists(fileName))
     // Ler conteúdo do arquivo JSON
     string jsonString = File.ReadAllText(fileName);
 
-    // Desserializar JSON para lista de pessoas
-    List<Pessoa> pessoas = JsonSerializer.Deserialize<List<Pessoa>>(jsonString);
+    List<Pessoa> pessoas = JsonSerializer.Deserialize<List<Pessoa>>(jsonString)!;
 
-    // Permitir ao usuário inserir uma idade
     Console.Write("Digite a idade para buscar pessoas: ");
-    int idadeParaBuscar = int.Parse(Console.ReadLine());
+    int idadeRequerida = int.Parse(Console.ReadLine()!);
 
     // Filtrar pessoas com a idade especificada
-    List<Pessoa> pessoasComIdade = pessoas.Where(p => p.Idade == idadeParaBuscar).ToList();
+    List<Pessoa> pessoasComIdade = pessoas.Where(pessoa => pessoa.Idade == idadeRequerida).ToList();
 
-    if (pessoasComIdade.Any()) // Verifica se na lista possui algum elemento (não nulez)
+    if (pessoasComIdade.Count != 0)
     {
-        // Exibir informações das pessoas com a idade especificada
-        Console.WriteLine($"Pessoas com {idadeParaBuscar} anos:");
+        Console.WriteLine($"Pessoas com {idadeRequerida} anos:");
 
         foreach (Pessoa pessoa in pessoasComIdade)
         {
@@ -161,7 +161,7 @@ if (File.Exists(fileName))
     }
     else
     {
-        Console.WriteLine($"Nenhuma pessoa encontrada com {idadeParaBuscar} anos.");
+        Console.WriteLine($"Nenhuma pessoa encontrada com {idadeRequerida} anos.");
     }
 }
 else
